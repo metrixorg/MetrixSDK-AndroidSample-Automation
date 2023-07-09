@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Metrix SDK Android Sample</string>
+    <string name="sign_in">Sign in</string>
+    <string name="google_logo">Google Logo</string>
+    <string name="metrix_logo">Metrix Logo</string>
+    <string name="welcome">Welcome</string>
+    <string name="default_name">name</string>
+    <string name="default_email">email</string>
+    <string name="sign_out">Sign out</string>
 </resources>
