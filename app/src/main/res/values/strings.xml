@@ -7,4 +7,7 @@
     <string name="default_name">name</string>
     <string name="default_email">email</string>
     <string name="sign_out">Sign out</string>
+    <string name="string_attribute">String</string>
+    <string name="number_attribute">Number</string>
+    <string name="send_event">Send Event</string>
 </resources>

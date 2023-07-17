@@ -66,4 +66,8 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+
+    implementation 'ir.metrix.attribution:metrix:2.0.0.beta8'
+    implementation 'ir.metrix.analytics:metrix:2.0.0.beta8'
+    implementation 'ir.metrix.notification:metrix:2.0.0.beta8'
 }

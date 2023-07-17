@@ -3,6 +3,7 @@ package ir.metrix.sample
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -11,6 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import ir.metrix.analytics.MetrixAnalytics
 
 
 class MainActivity : ComponentActivity() {
@@ -18,6 +20,9 @@ class MainActivity : ComponentActivity() {
     private lateinit var gso: GoogleSignInOptions
     private lateinit var gsc: GoogleSignInClient
     private lateinit var googleBtn: ImageView
+
+    private val TAG = "MainActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,6 +38,10 @@ class MainActivity : ComponentActivity() {
         }
 
         googleBtn.setOnClickListener { signIn() }
+
+        MetrixAnalytics.setUserIdListener { metrixUserId ->
+            Log.d(TAG, "metrixId: $metrixUserId")
+        }
 
     }
 
@@ -52,9 +61,16 @@ class MainActivity : ComponentActivity() {
 
             try {
                 task.getResult(ApiException::class.java)
+
+                val acct = GoogleSignIn.getLastSignedInAccount(this) ?: throw Exception()
+                MetrixAnalytics.User.setUserCustomId(acct.email)
+                MetrixAnalytics.User.setFirstName(acct.givenName)
+                MetrixAnalytics.User.setLastName(acct.familyName)
+                MetrixAnalytics.User.setEmail(acct.email)
+
                 navigateToSecondActivity()
             } catch (e: ApiException) {
-                Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
+                Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT)
                     .show()
             }
         }
