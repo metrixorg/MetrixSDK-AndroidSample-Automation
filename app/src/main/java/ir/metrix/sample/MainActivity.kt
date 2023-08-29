@@ -12,6 +12,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import ir.metrix.analytics.MetrixAnalytics
 
 
@@ -67,6 +69,18 @@ class MainActivity : ComponentActivity() {
                 MetrixAnalytics.User.setFirstName(acct.givenName)
                 MetrixAnalytics.User.setLastName(acct.familyName)
                 MetrixAnalytics.User.setEmail(acct.email)
+
+                FirebaseMessaging.getInstance().token.addOnCompleteListener(
+                    OnCompleteListener { task ->
+                        if (!task.isSuccessful) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                            return@OnCompleteListener
+                        }
+                        val token = task.result
+                        Log.d(TAG, "token: $token")
+                        MetrixAnalytics.User.setFcmToken(token)
+                    }
+                )
 
                 navigateToSecondActivity()
             } catch (e: ApiException) {

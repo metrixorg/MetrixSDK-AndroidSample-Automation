@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "508252255690",
+    "project_id": "metrix-sdk-android-sample",
+    "storage_bucket": "metrix-sdk-android-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508252255690:android:3fa40c919e315865d70b33",
+        "android_client_info": {
+          "package_name": "ir.metrix.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508252255690-sa6m36480oru97u0cuq2v2anlan6jojt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALve6w5gKYWPitXtK0tEIb8zK6u5bSxJA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508252255690-sa6m36480oru97u0cuq2v2anlan6jojt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

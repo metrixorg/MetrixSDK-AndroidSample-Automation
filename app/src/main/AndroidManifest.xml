@@ -28,7 +28,7 @@
 
         <meta-data
             android:name="ir.metrix.APPLICATION_ID"
-            android:value="YOUR_APP_ID" />
+            android:value="apovoqdqmwxjwna" />
 
         <meta-data
             android:name="metrix_developer_mode"
@@ -36,7 +36,26 @@
 
         <meta-data
             android:name="ir.metrix.SIGNATURE"
-            android:value="YOUR_SIGNATURE" />
+            android:value="qzJgZYCaXFAEHBU6NSdicL5kjiZqNvQzOKUbBFW2WuQrUymuGm8nKhwgHBZ0YUA3Nlr2JKSkjlLhNyP6PIW0ViP1MFCzLJJrqoXdWXQ6YFlzVDK3PxC0IF0=" />
+
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+             See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/metrix_ic_notifications" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/blue_200" />
+
+        <service
+            android:name=".CustomFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
     </application>
 

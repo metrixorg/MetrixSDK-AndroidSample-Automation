@@ -61,7 +61,7 @@ class SecondActivity : AppCompatActivity() {
 
     private fun sendTestEvent(strValue: String, intValue: String) {
         try {
-            MetrixAnalytics.newEvent("TEST_EVENT_SLUG",
+            MetrixAnalytics.newEvent("ctvta",
                 mapOf(
                     "str-test" to strValue,
                     "int-value" to intValue
